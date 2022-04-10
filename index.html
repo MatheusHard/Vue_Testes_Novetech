@@ -14,41 +14,59 @@
 <body>
 
     <div id="app">
-        <el-form ref="form" :model="form" label-width="120px">
+       
+      <el-form ref="form" :model="form" label-width="120px">
 
-            <p v-if="errors.length">
+            <!--
+              <p v-if="errors.length">
                 <b>Please correct the following error(s):</b>
                 <ul>
                   <li v-for="error in errors">{{ error }}</li>
                 </ul>
               </p>
-
-            <el-form-item label="Activity name">
-              <el-input v-model="form.name"></el-input>
-            </el-form-item>
+            -->
+            <el-row>
+              <el-col :span="24"><div class="grid-content bg-purple-dark">
+                <el-form-item label="Activity name">
+                  <el-input v-model="form.name"></el-input>
+                </el-form-item>
+              </div></el-col>
+            </el-row>
             
+            <!--Primeira Linha:-->
+            <el-row>
+              <el-col :span="8"><div class="grid-content bg-purple">
+                <el-form-item label="É Hipertenso?">
+                  <el-radio-group v-model="form.hipertenso">
+                      <el-radio-button label="true">SIM</el-radio-button>
+                      <el-radio-button label="false">NÃO</el-radio-button>
+                   </el-radio-group>
+                </el-form-item>
+              </div></el-col>
 
-           <el-form-item label="É Hipertenso?">
-                <el-radio-group v-model="form.hipertenso">
-                    <el-radio-button label="true">SIM</el-radio-button>
-                    <el-radio-button label="false">NÃO</el-radio-button>
-                 </el-radio-group>
-           </el-form-item>
+              <el-col :span="8"><div class="grid-content bg-purple-light">
+                <el-form-item label="É Diabético?">
+                  <el-radio-group v-model="form.diabetico">
+                      <el-radio-button label="true">SIM</el-radio-button>
+                      <el-radio-button label="false">NÃO</el-radio-button>
+                   </el-radio-group>
+             </el-form-item>
+          
+              </div></el-col>
+              <el-col :span="8"><div class="grid-content bg-purple">
+                <el-form-item label="É Diabético?">
+                  <el-radio-group v-model="form.diabetico">
+                      <el-radio-button label="true">SIM</el-radio-button>
+                      <el-radio-button label="false">NÃO</el-radio-button>
+                   </el-radio-group>
+             </el-form-item>
+             </div></el-col>
+            </el-row>
 
-           <el-form-item label="É Diabético?">
-            <el-radio-group v-model="form.diabetico">
-                <el-radio-button label="true">SIM</el-radio-button>
-                <el-radio-button label="false">NÃO</el-radio-button>
-             </el-radio-group>
-       </el-form-item>
-           
               <el-button type="primary" @click="onAnaminese()">Enviar</el-button>
               <el-button>Cancel</el-button>
             </el-form-item>
           </el-form>
-
-          
-         
     </div>
    
 
@@ -81,16 +99,22 @@
                     
                     this.checkFormValidate();
                     if(this.errors.length <= 0) {
-                        //axios.post("url", ojjeto {})
-                        console.log('Ficha Anaminese');
-                        console.log(this.form.hipertenso);
+
+                          axios.post('/url', this.form)
+                            .then(function (response) {
+                              console.log(response);
+                            })
+                            .catch(function (error) {
+                              console.log(error);
+                            });                        
+                          console.log(this.form);
                     }else{
                         this.openValidate();
                     }
 
                 },
 
-                //Validar dadosdos Radios:
+                //Validar dados do Form Anaminese:
                 checkFormValidate(){
 
                     this.errors = [];
@@ -107,7 +131,7 @@
                 openValidate() {
                     this.$notify.error({
                         title: 'Atenção',
-                        message: 'Preencha todos as opções Obrigatórias!!!\n\n'+ this.errors,
+                        message: 'Preencha os campos Obrigatórios!!!\n\n'+ this.errors.join(' - \n'),
                         
                         
                         }, 2500);
@@ -122,5 +146,12 @@
                     
     });
     </script>
+ 
+<style>
+  .row-bg {
+  padding: 10px 0;
+  background-color: #f9fafc;
+}
+</style>
     
 
