@@ -36,8 +36,8 @@
             <!--Primeira Linha:-->
             <el-row>
               <el-col :span="8"><div class="grid-content bg-purple">
-                <el-form-item label="É Hipertenso?">
-                  <el-radio-group v-model="form.hipertenso">
+                <el-form-item label="Anemia?">
+                  <el-radio-group v-model="form.anemia">
                       <el-radio-button label="true">SIM</el-radio-button>
                       <el-radio-button label="false">NÃO</el-radio-button>
                    </el-radio-group>
@@ -45,8 +45,8 @@
               </div></el-col>
 
               <el-col :span="8"><div class="grid-content bg-purple-light">
-                <el-form-item label="É Diabético?">
-                  <el-radio-group v-model="form.diabetico">
+                <el-form-item label="Hepatite?">
+                  <el-radio-group v-model="form.hepatite">
                       <el-radio-button label="true">SIM</el-radio-button>
                       <el-radio-button label="false">NÃO</el-radio-button>
                    </el-radio-group>
@@ -54,14 +54,237 @@
           
               </div></el-col>
               <el-col :span="8"><div class="grid-content bg-purple">
-                <el-form-item label="É Diabético?">
-                  <el-radio-group v-model="form.diabetico">
+                <el-form-item label="Sifilis?">
+                  <el-radio-group v-model="form.sifilis">
                       <el-radio-button label="true">SIM</el-radio-button>
                       <el-radio-button label="false">NÃO</el-radio-button>
                    </el-radio-group>
              </el-form-item>
              </div></el-col>
             </el-row>
+
+             <!--Segunda Linha-->
+             <el-row>
+              <el-col :span="8"><div class="grid-content bg-purple">
+                <el-form-item label="HIV">
+                  <el-radio-group v-model="form.hiv">
+                      <el-radio-button label="true">SIM</el-radio-button>
+                      <el-radio-button label="false">NÃO</el-radio-button>
+                   </el-radio-group>
+                </el-form-item>
+              </div></el-col>
+
+              <el-col :span="8"><div class="grid-content bg-purple-light">
+                <el-form-item label="Asma">
+                  <el-radio-group v-model="form.asma">
+                      <el-radio-button label="true">SIM</el-radio-button>
+                      <el-radio-button label="false">NÃO</el-radio-button>
+                   </el-radio-group>
+             </el-form-item>
+          
+              </div></el-col>
+              <el-col :span="8"><div class="grid-content bg-purple">
+                <el-form-item label="Fumante">
+                  <el-radio-group v-model="form.fumante">
+                      <el-radio-button label="true">SIM</el-radio-button>
+                      <el-radio-button label="false">NÃO</el-radio-button>
+                   </el-radio-group>
+             </el-form-item>
+             </div></el-col>
+            </el-row>
+
+               <!--Terceira Linha-->
+               <el-row>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Hormonios">
+                    <el-radio-group v-model="form.hormonios">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+                  </el-form-item>
+                </div></el-col>
+  
+                <el-col :span="8"><div class="grid-content bg-purple-light">
+                  <el-form-item label="Alcoolista">
+                    <el-radio-group v-model="form.alcoolista">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+            
+                </div></el-col>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Tatuagens">
+                    <el-radio-group v-model="form.tatuagens">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+               </div></el-col>
+              </el-row>
+              
+               <!--Quarta Linha-->
+               <el-row>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Herpes/Aftas">
+                    <el-radio-group v-model="form.herpes_aftas">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+                  </el-form-item>
+                </div></el-col>
+  
+                <el-col :span="8"><div class="grid-content bg-purple-light">
+                  <el-form-item label="Gravidez">
+                    <el-radio-group v-model="form.gravidez">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+            
+                </div></el-col>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Desmaios">
+                    <el-radio-group v-model="form.desmaios">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+               </div></el-col>
+              </el-row>
+
+               <!--Quinta Linha-->
+               <el-row>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Febre Reumatica">
+                    <el-radio-group v-model="form.febre_reumatica">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+                  </el-form-item>
+                </div></el-col>
+  
+                <el-col :span="8"><div class="grid-content bg-purple-light">
+                  <el-form-item label="Diabetes">
+                    <el-radio-group v-model="form.diabetes">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+            
+                </div></el-col>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Epilepsia">
+                    <el-radio-group v-model="form.epilepsia">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+               </div></el-col>
+              </el-row>
+
+               <!--Sexta Linha-->
+               <el-row>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Cicatrização Ruim">
+                    <el-radio-group v-model="form.cicatrizacao_ruim">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+                  </el-form-item>
+                </div></el-col>
+  
+                <el-col :span="8"><div class="grid-content bg-purple-light">
+                  <el-form-item label="Disturbios Psico">
+                    <el-radio-group v-model="form.disturbios_psico">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+            
+                </div></el-col>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Endocardite Bact">
+                    <el-radio-group v-model="form.endocardite_bact">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+               </div></el-col>
+              </el-row>
+
+              <!--Setima Linha-->
+              <el-row>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Problema Hepatico">
+                    <el-radio-group v-model="form.problema_hepatico">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+                  </el-form-item>
+                </div></el-col>
+  
+                <el-col :span="8"><div class="grid-content bg-purple-light">
+                  <el-form-item label="Problema Renal">
+                    <el-radio-group v-model="form.problema_renal">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+            
+                </div></el-col>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Problema Cardiaco">
+                    <el-radio-group v-model="form.problema_cardiaco">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+               </div></el-col>
+              </el-row>
+
+              
+              <!--Oitava Linha-->
+              <el-row>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Tensão Arterial">
+                    <el-radio-group v-model="form.tensao_arterial">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+                  </el-form-item>
+                </div></el-col>
+  
+                <el-col :span="8"><div class="grid-content bg-purple-light">
+                  <el-form-item label="Cirurgia">
+                    <el-radio-group v-model="form.cirurgia">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+            
+                </div></el-col>
+                <el-col :span="8"><div class="grid-content bg-purple">
+                  <el-form-item label="Tumor">
+                    <el-radio-group v-model="form.tumor">
+                        <el-radio-button label="true">SIM</el-radio-button>
+                        <el-radio-button label="false">NÃO</el-radio-button>
+                     </el-radio-group>
+               </el-form-item>
+               </div></el-col>
+              </el-row>
+
+                 <!--Oitava Linha-->
+                 <el-row>
+                  <el-col :span="8"><div class="grid-content bg-purple">
+                    <el-form-item label="Int. Hospitalar">
+                      <el-radio-group v-model="form.internacao_hospitalar">
+                          <el-radio-button label="true">SIM</el-radio-button>
+                          <el-radio-button label="false">NÃO</el-radio-button>
+                       </el-radio-group>
+                    </el-form-item>
+                  </div></el-col>
+                </el-row>
 
               <el-button type="primary" @click="onAnaminese()">Enviar</el-button>
               <el-button>Cancel</el-button>
@@ -80,10 +303,33 @@
         el:'#app',
         data() {
                 return {
+                
                   form: {
-                    hipertenso: null,
-                    diabetico: null,
-                    
+                    anemia: null,
+                    hepatite: null,
+                    sifilis: null,
+                    hiv: null,
+                    asma: null,
+                    fumante: null,
+                    hormonios: null,
+                    alcoolista: null,
+                    tatuagens: null,
+                    herpes_aftas: null,
+                    gravidez: null,
+                    desmaios: null,
+                    febre_reumatica: null,
+                    diabetes: null,
+                    epilepsia: null,
+                    cicatrizacao_ruim: null,
+                    disturbios_psico: null,
+                    endocardite_bact: null,
+                    problema_hepatico: null,
+                    problema_renal: null,
+                    problema_cardiaco: null,
+                    tensao_arterial: null,
+                    cirurgia: null,
+                    tumor: null,
+                    internacao_hospitalar: null,
                     name: '',
                     anaminese: {}
 
@@ -118,13 +364,35 @@
                 checkFormValidate(){
 
                     this.errors = [];
-
-                    if(!this.form.hipertenso) this.errors.push("Hipertenso");
-                    if(!this.form.diabetico) this.errors.push("Diabetico");
-
+       
+                    if(!this.form.anemia) this.errors.push("Anemia");
+                    if(!this.form.hepatite) this.errors.push("Hepatite");
+                    if(!this.form.sifilis) this.errors.push("Sifilis");
+                    if(!this.form.hiv) this.errors.push("Hiv");
+                    if(!this.form.asma) this.errors.push("Asma");
+                    if(!this.form.fumante) this.errors.push("Fumante");
+                    if(!this.form.hormonios) this.errors.push("Hormonios");
+                    if(!this.form.alcoolista) this.errors.push("Alcoolista");
+                    if(!this.form.tatuagens) this.errors.push("Tatuagens");
+                    if(!this.form.herpes_aftas) this.errors.push("Herpes/Aftas");
+                    if(!this.form.gravidez) this.errors.push("Gravidez");
+                    if(!this.form.desmaios) this.errors.push("Desmaios");
+                    if(!this.form.febre_reumatica) this.errors.push("Febre Reumatica");
+                    if(!this.form.diabetes) this.errors.push("Diabetes");
+                    if(!this.form.epilepsia) this.errors.push("Epilepsia");
+                    if(!this.form.cicatrizacao_ruim) this.errors.push("Cicatrizacao Ruim");
+                    if(!this.form.disturbios_psico) this.errors.push("Disturbios Psico");
+                    if(!this.form.endocardite_bact) this.errors.push("Endocardite Bact");
+                    if(!this.form.problema_hepatico) this.errors.push("Problema Hepatico");
+                    if(!this.form.problema_renal) this.errors.push("Problema Renal");
+                    if(!this.form.problema_cardiaco) this.errors.push("Problema Cardiaco");
+                    if(!this.form.tensao_arterial) this.errors.push("Tensao Arterial");
+                    if(!this.form.cirurgia) this.errors.push("Cirurgia");
+                    if(!this.form.internacao_hospitalar) this.errors.push("Internacao Hospitalar");
+                    if(!this.form.tumor) this.errors.push("Tumor");
 
                     if(!this.errors.length) return true;
-                  
+                 
                     
                 },
 
