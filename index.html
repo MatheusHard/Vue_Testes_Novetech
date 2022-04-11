@@ -17,6 +17,12 @@
        
       <el-form ref="form" :model="form" label-width="120px">
 
+
+        <el-row>
+          <el-col :span="24"><div class="grid-content bg-purple-dark">Ficha de Anaminese</div></el-col>
+        </el-row>
+        <el-divider></el-divider>
+
             <!--
               <p v-if="errors.length">
                 <b>Please correct the following error(s):</b>
@@ -284,8 +290,91 @@
                        </el-radio-group>
                     </el-form-item>
                   </div></el-col>
+
+                  <el-col :span="8"><div class="grid-content bg-purple">
+                    <el-form-item label="Problema Gastrico">
+                      <el-radio-group v-model="form.gastrico">
+                          <el-radio-button label="true">SIM</el-radio-button>
+                          <el-radio-button label="false">NÃO</el-radio-button>
+                       </el-radio-group>
+                    </el-form-item>
+                  </div></el-col>
+
+                  
+                  <el-col :span="8"><div class="grid-content bg-purple">
+                    <el-form-item label="Problema Alergico">
+                      <el-radio-group v-model="form.alergico">
+                          <el-radio-button label="true">SIM</el-radio-button>
+                          <el-radio-button label="false">NÃO</el-radio-button>
+                       </el-radio-group>
+
+                    </el-form-item>
+                  </div></el-col>
                 </el-row>
 
+
+                <el-divider></el-divider>
+
+                <el-row :gutter="20">
+                  <el-col :span="6"><div class="grid-content bg-purple">
+                    <el-form-item label="Alergia?">
+                      <el-radio-group v-model="form.alergico_qual">
+                          <el-radio-button label="true">SIM</el-radio-button>
+                          <el-radio-button label="false">NÃO</el-radio-button>
+                       </el-radio-group>
+                    </el-form-item>
+                  </div></el-col>
+
+                  <el-col v-if="form.alergico_qual" :span="14"><div class="grid-content bg-purple">
+                    <el-form-item label="Qual?">
+                      <el-input placeholder="Please input" v-model="form.alergico_qual_input"></el-input>
+                    </el-form-item>
+                  </div></el-col>
+                  
+                  <p>{{form.alergico_qual}}</p>
+                </el-row>
+
+                <el-row :gutter="20">
+                  <el-col :span="6"><div class="grid-content bg-purple">
+                    <el-form-item label="Doença?">
+                      <el-radio-group v-model="form.doenca">
+                          <el-radio-button label="true">SIM</el-radio-button>
+                          <el-radio-button label="false">NÃO</el-radio-button>
+                       </el-radio-group>
+                    </el-form-item>
+                  </div></el-col>
+
+                  <el-col v-if="form.doenca" :span="14"><div class="grid-content bg-purple">
+                    <el-form-item label="Qual?">
+                      <el-input placeholder="Please input" v-model="form.doenca_qual_input"></el-input>
+                    </el-form-item>
+                  </div></el-col>
+                  
+                </el-row>
+
+                <el-row :gutter="20">
+                  <el-col :span="6"><div class="grid-content bg-purple">
+                    <el-form-item label="T. Medico?">
+                      <el-radio-group v-model="form.tratamento">
+                          <el-radio-button label=true>SIM</el-radio-button>
+                          <el-radio-button label=false>NÃO</el-radio-button>
+                       </el-radio-group>
+                    </el-form-item>
+                  </div></el-col>
+
+                  <el-col v-if="form.tratamento" :span="14"><div class="grid-content bg-purple">
+                    <el-form-item label="Qual?">
+                      <el-input  placeholder="Please input" v-model="form.tratamento_input"></el-input>
+                    </el-form-item>
+                  </div></el-col>
+                  
+                </el-row>
+
+
+                <p>{{form.tratamento}}</p>
+
+           
+             <el-form-item>
               <el-button type="primary" @click="onAnaminese()">Enviar</el-button>
               <el-button>Cancel</el-button>
             </el-form-item>
@@ -330,6 +419,14 @@
                     cirurgia: null,
                     tumor: null,
                     internacao_hospitalar: null,
+                    gastrico: null,
+                    alergico: null,
+                    alergico_qual: null,
+                    alergico_qual_input: null,
+                    doenca_qual_input: null,
+                    doenca: null,
+                    tratamento: null,
+                    tratamento_input: null,
                     name: '',
                     anaminese: {}
 
@@ -342,7 +439,9 @@
 
                 //Enviardadospra API:
                 async onAnaminese() {
-                    
+
+                  console.log(this.form.tratamento)  
+
                     this.checkFormValidate();
                     if(this.errors.length <= 0) {
 
@@ -360,6 +459,9 @@
 
                 },
 
+                OnTrat(){
+                  this.form.tratamento = true;
+                },
                 //Validar dados do Form Anaminese:
                 checkFormValidate(){
 
