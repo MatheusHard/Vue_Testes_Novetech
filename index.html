@@ -1,3 +1,7 @@
+<script setup>
+  import db from '/db/db.json';
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -369,31 +373,59 @@
                   </div></el-col>
                   
                 </el-row>
+                <el-row>
+                  <el-switch v-model="value_switch" active-color="#13ce66" inactive-color="#ff4949"></el-switch>            
+                </el-row>
 
+                <el-row>
+                  <template>
+                    <el-transfer v-model="form.data_transfer" :data="data"></el-transfer>
+                  </template>
+                </el-row>
 
-                <p>{{form.tratamento}}</p>
+                <p>{{value_switch}}</p>
 
-           
              <el-form-item>
               <el-button type="primary" @click="onAnaminese()">Enviar</el-button>
               <el-button>Cancel</el-button>
             </el-form-item>
           </el-form>
     </div>
-   
-
-
-
+ 
 </body>
 </html>
 
 <script>
     const app = new Vue({
+      
         el:'#app',
         data() {
+          
+                ///el:transfer testes:
+                const generateData = _ => {
+                const data = [];
+                const horas = ['10:01', '10:09', '13:09', '05:43', '12:56']
+                horas.forEach((h, index) => {
+                    data.push({
+                      label: h,
+                      key: h,
+                      value: index,
+                     // initial: initials[index]
+                    });
+                  });
+                return data;
+              };
+              ///Fim el:transfer
+                 
+          
                 return {
-                
-                  form: {
+                  ///el:transfer:
+                  data: generateData(),
+                 
+                  ///FIM el:transfer
+      
+                  value_switch: null,
+                form: {
                     anemia: null,
                     hepatite: null,
                     sifilis: null,
@@ -428,15 +460,18 @@
                     tratamento: null,
                     tratamento_input: null,
                     name: '',
+                    data_transfer: [],
                     anaminese: {}
 
                   },
-                  errors: []
+                  errors: [],
+                  array_drop_box: []
 
                 }
               },
               methods: {
 
+               
                 //Enviardadospra API:
                 async onAnaminese() {
 
@@ -457,7 +492,7 @@
 
                 },
 
-             
+                ///Pegar o change pra ativar ou desativar inputs:
                 changeTratamento(data){
                      this.form.tratamento = this.stringToBoolean(data) 
                 },
@@ -466,9 +501,11 @@
                 
                 },
                 changeAlergias(data){
-                  this.form.alergias = this.stringToBoolean(data) 
+                  this.form.alergias = this.stringToBoolean(data);
+                  console.log(this.form.data_transfer); 
                 },
-                //Validar dados do Form Anaminese:
+
+                ///Validar dados do Form Anaminese:
                 checkFormValidate(){
 
                     this.errors = [];
@@ -506,11 +543,13 @@
                     if(!this.errors.length) return true;
                
                 },
+                ///Is Empty:
                 isEmpty(value){
                      if(value === null) return true;
                      else return false;
                 },
 
+                ///Opne Dialog falta validar:
                 openValidate() {
                     this.$notify.error({
                         title: 'Atenção',
@@ -520,6 +559,7 @@
                         }, 2500);
                      },
 
+                    ///convert string to Maginbool:
                      stringToBoolean(string){
                       switch(string.toLowerCase().trim()){
                           case "true": 
@@ -539,10 +579,7 @@
                 }            
 
               },
-                  
-                
-                        
-                    
+             
     });
     </script>
  
