@@ -498,14 +498,17 @@
                     if(!this.form.cirurgia) this.errors.push("Cirurgia");
                     if(!this.form.internacao_hospitalar) this.errors.push("Internacao Hospitalar");
                     if(!this.form.tumor) this.errors.push("Tumor");
-                    if(!this.form.tratamento) this.errors.push("Tratamento Medico");
-                    if(!this.form.doenca) this.errors.push("Doença");
-                    if(!this.form.alergias) this.errors.push("Alergias");
+                    if(this.isEmpty(this.form.tratamento)) this.errors.push("Tratamento Medico");
+                    if(this.isEmpty(this.form.doenca)) this.errors.push("Doença");
+                    if(this.isEmpty(this.form.alergias)) this.errors.push("Alergias");
                     
 
                     if(!this.errors.length) return true;
-                 
-                    
+               
+                },
+                isEmpty(value){
+                     if(value === null) return true;
+                     else return false;
                 },
 
                 openValidate() {
