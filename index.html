@@ -44,7 +44,7 @@
               <el-col :span="8"><div class="grid-content bg-purple">
                 <el-form-item label="Anemia?">
                   <el-radio-group v-model="form.anemia">
-                      <el-radio-button label="true">SIM</el-radio-button>
+                      <el-radio-button  label="true">SIM</el-radio-button>
                       <el-radio-button label="false">NÃO</el-radio-button>
                    </el-radio-group>
                 </el-form-item>
@@ -317,17 +317,17 @@
 
                 <el-row :gutter="20">
                   <el-col :span="6"><div class="grid-content bg-purple">
-                    <el-form-item label="Alergia?">
-                      <el-radio-group v-model="form.alergico_qual">
+                    <el-form-item label="Alergias?">
+                      <el-radio-group v-model="form.alergias" @change="changeAlergias">
                           <el-radio-button label="true">SIM</el-radio-button>
                           <el-radio-button label="false">NÃO</el-radio-button>
                        </el-radio-group>
                     </el-form-item>
                   </div></el-col>
 
-                  <el-col v-if="form.alergico_qual" :span="14"><div class="grid-content bg-purple">
+                  <el-col v-if="form.alergias" :span="14"><div class="grid-content bg-purple">
                     <el-form-item label="Qual?">
-                      <el-input placeholder="Please input" v-model="form.alergico_qual_input"></el-input>
+                      <el-input placeholder="Please input" v-model="form.alergias_input"></el-input>
                     </el-form-item>
                   </div></el-col>
                   
@@ -337,7 +337,7 @@
                 <el-row :gutter="20">
                   <el-col :span="6"><div class="grid-content bg-purple">
                     <el-form-item label="Doença?">
-                      <el-radio-group v-model="form.doenca">
+                      <el-radio-group v-model="form.doenca" @change="changeDoenca">
                           <el-radio-button label="true">SIM</el-radio-button>
                           <el-radio-button label="false">NÃO</el-radio-button>
                        </el-radio-group>
@@ -345,7 +345,7 @@
                   </div></el-col>
 
                   <el-col v-if="form.doenca" :span="14"><div class="grid-content bg-purple">
-                    <el-form-item label="Qual?">
+                    <el-form-item label="Qual?" v-if="form.doenca">
                       <el-input placeholder="Please input" v-model="form.doenca_qual_input"></el-input>
                     </el-form-item>
                   </div></el-col>
@@ -355,15 +355,15 @@
                 <el-row :gutter="20">
                   <el-col :span="6"><div class="grid-content bg-purple">
                     <el-form-item label="T. Medico?">
-                      <el-radio-group v-model="form.tratamento">
-                          <el-radio-button label=true>SIM</el-radio-button>
-                          <el-radio-button label=false>NÃO</el-radio-button>
+                      <el-radio-group v-model="form.tratamento" @change="changeTratamento">
+                          <el-radio-button label="true">SIM</el-radio-button>
+                          <el-radio-button label="false">NÃO</el-radio-button>
                        </el-radio-group>
                     </el-form-item>
                   </div></el-col>
 
-                  <el-col v-if="form.tratamento" :span="14"><div class="grid-content bg-purple">
-                    <el-form-item label="Qual?">
+                  <el-col  :span="14"><div class="grid-content bg-purple">
+                    <el-form-item v-if="form.tratamento"  label="Qual?">
                       <el-input  placeholder="Please input" v-model="form.tratamento_input"></el-input>
                     </el-form-item>
                   </div></el-col>
@@ -421,9 +421,9 @@
                     internacao_hospitalar: null,
                     gastrico: null,
                     alergico: null,
-                    alergico_qual: null,
-                    alergico_qual_input: null,
-                    doenca_qual_input: null,
+                    alergias: null,
+                    alergias_input: null,
+                    doenca_input: null,
                     doenca: null,
                     tratamento: null,
                     tratamento_input: null,
@@ -439,8 +439,6 @@
 
                 //Enviardadospra API:
                 async onAnaminese() {
-
-                  console.log(this.form.tratamento)  
 
                     this.checkFormValidate();
                     if(this.errors.length <= 0) {
@@ -459,8 +457,16 @@
 
                 },
 
-                OnTrat(){
-                  this.form.tratamento = true;
+             
+                changeTratamento(data){
+                     this.form.tratamento = this.stringToBoolean(data) 
+                },
+                changeDoenca(data){
+                  this.form.doenca = this.stringToBoolean(data) 
+                
+                },
+                changeAlergias(data){
+                  this.form.alergias = this.stringToBoolean(data) 
                 },
                 //Validar dados do Form Anaminese:
                 checkFormValidate(){
@@ -492,6 +498,10 @@
                     if(!this.form.cirurgia) this.errors.push("Cirurgia");
                     if(!this.form.internacao_hospitalar) this.errors.push("Internacao Hospitalar");
                     if(!this.form.tumor) this.errors.push("Tumor");
+                    if(!this.form.tratamento) this.errors.push("Tratamento Medico");
+                    if(!this.form.doenca) this.errors.push("Doença");
+                    if(!this.form.alergias) this.errors.push("Alergias");
+                    
 
                     if(!this.errors.length) return true;
                  
@@ -507,10 +517,26 @@
                         }, 2500);
                      },
 
-                    
+                     stringToBoolean(string){
+                      switch(string.toLowerCase().trim()){
+                          case "true": 
+                          case "yes": 
+                          case "1": 
+                            return true;
+
+                          case "false": 
+                          case "no": 
+                          case "0": 
+                          case null: 
+                            return false;
+
+                          default: 
+                            return Boolean(string);
+                    }
+                }            
 
               },
-                
+                  
                 
                         
                     
