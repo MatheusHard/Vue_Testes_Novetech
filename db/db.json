@@ -14,9 +14,11 @@
             "CBO": "221",
             "tipo_especialidade":
             [
-                {"id": 1, "tipo": "neuro"},
-                {"id": 2, "tipo": "ginecologista"},
-                {"id": 3, "tipo": "proctologista"}
+                {"id": 1, "tipo": "Neuro"},
+                {"id": 2, "tipo": "Ginecologista"},
+                {"id": 3, "tipo": "Proctologista"},
+                {"id": 4, "tipo": "Geriatria"}
+
             ]
         }
     ],
