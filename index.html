@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//unpkg.com/element-ui/lib/umd/locale/en.js"></script>
+
 
 </head>
 <body>
@@ -153,8 +155,8 @@
                   </div></el-col>
 
                   <el-col  :span="14"><div class="grid-content bg-purple">
-                    <el-form-item v-if="form.tratamento"  label="Qual?">
-                      <el-input  placeholder="Please input" v-model="form.tratamento_input"></el-input>
+                    <el-form-item label="Qual?">
+                      <el-input  placeholder="Please input" v-model="form.tratamento_input" :disabled="flag_trat"></el-input>
                     </el-form-item>
                   </div></el-col>
                   
@@ -170,7 +172,8 @@
 
                 <el-row>
                   <template>
-                    <el-transfer v-model="form.data_transfer" :data="data"></el-transfer>
+                    <el-transfer :titles="['Disponiveis', 'Agenda']"
+                    v-model="form.data_transfer" :data="data"></el-transfer>
                   </template>
                 </el-row>
 
@@ -178,7 +181,7 @@
 
                <el-row :gutter="20">
                 <el-col  :span="10"><div class="grid-content bg-purple">
-                  <el-select @change="onChangeMedico()" v-model="array_medicos_especialidades" placeholder="Select">
+                  <el-select @change="onChangeMedico()" filterable v-model="array_medicos_especialidades" placeholder="Select">
                     <el-option 
                         v-for="item in array_medicos" :key="item.id" :label="item.nome" :value="item.tipo_especialidade">
                     </el-option>
@@ -187,7 +190,7 @@
 
               <el-col  :span="100"><div class="grid-content bg-purple">
 
-                <el-select @change="onChangeEspecialista()" v-if="flag_especialidade" v-model="especialidade" placeholder="Select">
+                <el-select @change="onChangeEspecialista()" filterable v-if="flag_especialidade" v-model="especialidade" placeholder="Select">
                   <el-option
                       v-for="item in array_medicos_especialidades" :key="item.id" :label="item.tipo" :value="item.id">
                   </el-option>
@@ -212,10 +215,14 @@
 </html>
 
 <script>
-
+  ELEMENT.locale(ELEMENT.lang.en)
+</script>
+<script>
+    
     const app = new Vue({
-      
+        
         el:'#app',
+        
         data() {
           
                 ///el:transfer testes:
@@ -264,7 +271,8 @@
                   array_medicos_especialidades: [],
                   especialidade: null,
 
-                  flag_especialidade: false
+                  flag_especialidade: false,
+                  flag_trat: true
 
                 }
               },
@@ -317,7 +325,9 @@
 
                 ///Pegar o change pra ativar ou desativar inputs:
                 changeTratamento(data){
-                     this.form.tratamento = this.stringToBoolean(data) 
+                     this.form.tratamento = this.stringToBoolean(data); 
+                     this.flag_trat = !this.stringToBoolean(data);
+
                 },
                 changeDoenca(data){
                   this.form.doenca = this.stringToBoolean(data) 

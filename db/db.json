@@ -5,7 +5,10 @@
             "id": 1,
             "nome": "Medico Clinico",
             "CBO": "120",
-            "tipo_especialidade":[]
+            "tipo_especialidade":
+            [
+                
+            ]
         
         },
         {
@@ -18,7 +21,6 @@
                 {"id": 2, "tipo": "Ginecologista"},
                 {"id": 3, "tipo": "Proctologista"},
                 {"id": 4, "tipo": "Geriatria"}
-
             ]
         }
     ],
