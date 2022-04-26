@@ -7,6 +7,9 @@
             "CBO": "120",
             "tipo_especialidade":
             [
+                {"id": 1, "tipo": "Estrategia"},
+                {"id": 2, "tipo": "Hospital Publico"},
+                {"id": 3, "tipo": "Hospital Particular"}
                 
             ]
         
