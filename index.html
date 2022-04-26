@@ -188,9 +188,9 @@
                   </el-select>
                 </div></el-col>
 
-              <el-col  :span="100"><div class="grid-content bg-purple">
+              <el-col :span="100"><div class="grid-content bg-purple">
 
-                <el-select @change="onChangeEspecialista()" filterable v-if="flag_especialidade" v-model="especialidade" placeholder="Select">
+                <el-select :disabled="!flag_especialidade"  @change="onChangeEspecialista()" filterable v-model="especialidade" disable placeholder="Select">
                   <el-option
                       v-for="item in array_medicos_especialidades" :key="item.id" :label="item.tipo" :value="item.id">
                   </el-option>
