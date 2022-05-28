@@ -1,41 +1,200 @@
 {
-       
-    "array_perfis": [
+  "array_perfis": [
+    {
+      "id": 1,
+      "nome": "Medico Clinico",
+      "CBO": "120",
+      "tipo_especialidade": [
         {
-            "id": 1,
-            "nome": "Medico Clinico",
-            "CBO": "120",
-            "tipo_especialidade":
-            [
-                {"id": 1, "tipo": "Estrategia"},
-                {"id": 2, "tipo": "Hospital Publico"},
-                {"id": 3, "tipo": "Hospital Particular"}
-                
-            ]
-        
+          "id": 1,
+          "tipo": "Estrategia"
         },
         {
-            "id": 2,
-            "nome": "Medico Especialista",
-            "CBO": "221",
-            "tipo_especialidade":
-            [
-                {"id": 1, "tipo": "Neuro"},
-                {"id": 2, "tipo": "Ginecologista"},
-                {"id": 3, "tipo": "Proctologista"},
-                {"id": 4, "tipo": "Geriatria"}
-            ]
+          "id": 2,
+          "tipo": "Hospital Publico"
+        },
+        {
+          "id": 3,
+          "tipo": "Hospital Particular"
         }
-    ],
-
-    "array_profissionais": [
-        {"id": 1, "nome": "Matheus", "age": 50},
-        {"id": 2, "nome": "Wilson", "age": 130},
-        {"id": 3, "nome": "Luiz", "age": 220}
-              
-    ]
-  }
-
-
-
-
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Medico Especialista",
+      "CBO": "221",
+      "tipo_especialidade": [
+        {
+          "id": 1,
+          "tipo": "Neuro"
+        },
+        {
+          "id": 2,
+          "tipo": "Ginecologista"
+        },
+        {
+          "id": 3,
+          "tipo": "Proctologista"
+        },
+        {
+          "id": 4,
+          "tipo": "Geriatria"
+        }
+      ]
+    }
+  ],
+  "array_profissionais": [
+    {
+      "id": 1,
+      "nome": "Matheus",
+      "age": 50
+    },
+    {
+      "id": 2,
+      "nome": "Wilson",
+      "age": 130
+    },
+    {
+      "id": 3,
+      "nome": "Luiz",
+      "age": 220
+    }
+  ],
+  "fichas": [
+    {
+      "anemia": "false",
+      "hepatite": "true",
+      "sifilis": "false",
+      "hiv": "true",
+      "asma": "false",
+      "fumante": "true",
+      "alergias": true,
+      "alergias_input": null,
+      "doenca_input": null,
+      "doenca": true,
+      "tratamento": false,
+      "tratamento_input": null,
+      "name": "",
+      "data_transfer": [],
+      "anaminese": {},
+      "id": 1
+    },
+    {
+      "anemia": "false",
+      "hepatite": "false",
+      "sifilis": "false",
+      "hiv": "false",
+      "asma": "false",
+      "fumante": "false",
+      "alergias": false,
+      "alergias_input": null,
+      "doenca_input": null,
+      "doenca": false,
+      "tratamento": false,
+      "tratamento_input": null,
+      "name": "",
+      "data_transfer": [],
+      "anaminese": {},
+      "id": 2
+    },
+    {
+      "anemia": "true",
+      "hepatite": "true",
+      "sifilis": "true",
+      "hiv": "false",
+      "asma": "false",
+      "fumante": "true",
+      "alergias": false,
+      "alergias_input": null,
+      "doenca_input": null,
+      "doenca": false,
+      "tratamento": false,
+      "tratamento_input": null,
+      "name": "",
+      "data_transfer": [
+        "13:09",
+        "05:43"
+      ],
+      "anaminese": {},
+      "id": 3
+    },
+    {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Authorization",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+      "id": 4
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Authorization",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+      },
+      "id": 5
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Authorization",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+      },
+      "id": 6
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Authorization",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+      },
+      "id": 7
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Authorization",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+      },
+      "id": 8
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Authorization",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+      },
+      "id": 9
+    },
+    {
+      "headers": {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Authorization",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+      },
+      "id": 10
+    }
+  ],
+  "fotos": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    },
+    {
+      "userId": 1,
+      "id": 2,
+      "title": "qui est esse",
+      "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+    },
+    {
+      "id": 3
+    }
+  ]
+}
