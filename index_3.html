@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+    <script src="https://unpkg.com/vue@2.6.1/dist/vue.js"></script>
+    <link rel="stylesheet" href="/assets/css/style_2.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//unpkg.com/element-ui/lib/umd/locale/en.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="map"></div>
+        <!-- <div class="imoveis">
+          <h2>{{imoveis.length}} Imóveis</h2>
+          <div @mouseover="showPin(imovel.ID)" :class="{active: imovelActive == imovel.ID}" @mouseleave="hidePin(imovel.ID)" class="imovel" v-for="imovel in imoveis.slice(0, 8)">
+            <div class="image" :style="{backgroundImage: `url('${imovel.acf.media[0].item}')`}"></div>
+            <div class="infos">
+              <h3 v-html="imovel.acf.location_address"></h3>
+              <div>{{imovel.acf.location_city}} / {{imovel.acf.location_state}}</div> -->
+            </div>
+          </div>
+        </div>
+      </div>  
+</body>
+</html>
+
+<script>
+    ELEMENT.locale(ELEMENT.lang.en)
+  
+  </script>
+  <script>
+     Vue.config.productionTip = false
+     Vue.config.devtools = true
+     
+     const app = new Vue({
+      el: '#app',
+  data() {
+    return {
+      imovelActive: false,
+      imoveis: [],
+      markers: [],
+      map: false,
+      infowindow: [],
+      icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+      iconHover: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+    }
+  },
+  mounted() {    
+    this.getImoveis();
+  },
+  methods: {
+    showPin(id) {
+      this.markers[id].setIcon(this.iconHover)
+      this.infowindow[id].open(this.map, this.markers[id]);
+    },
+    hidePin(id) {
+      this.markers[id].setIcon(this.icon)
+      this.infowindow[id].close();
+    },
+    renderMap() {           
+      var mapEl = document.getElementById('map');
+      let imovelCentral = this.imoveis[0]
+      const center = {
+          lat: parseFloat(imovelCentral.acf.location_latitude), 
+          lng: parseFloat(imovelCentral.acf.location_longitude)
+      }
+      this.map = new google.maps.Map(mapEl, {
+        zoom: 10, 
+        center: center
+      });
+      
+      for(i in this.imoveis) {
+        let imovel = this.imoveis[i];
+        this.markers[imovel.ID] = new google.maps.Marker({
+          position: {
+            lat: parseFloat(imovel.acf.location_latitude),
+            lng: parseFloat(imovel.acf.location_longitude)
+          },          
+          icon: this.icon,
+          map: this.map,
+          title: 'Hello World!'
+        });
+        this.infowindow[imovel.ID] = new google.maps.InfoWindow({
+          content: imovel.acf.location_address
+        });
+        this.markers[imovel.ID].addListener('mouseover', () => {
+          this.imovelActive = imovel.ID
+      this.markers[imovel.ID].setIcon(this.iconHover)
+          this.infowindow[imovel.ID].open(this.map, this.markers[imovel.ID]);
+        })
+        this.markers[imovel.ID].addListener('mouseout', () => {
+          this.imovelActive = false
+      this.markers[imovel.ID].setIcon(this.icon)
+          this.infowindow[imovel.ID].close()
+        })
+      }
+    },
+    getImoveis() {            axios.get('https://gist.githubusercontent.com/albreis/dbc54b30c3cc2eab571f947d2e06de01/raw/b271d3f1334a168ca773c02878808d92f2675324/imoveis.json').then(res => {
+        this.imoveis = res.data
+        this.renderMap()
+      }).catch(err => {
+        consoe.log(err)
+      })
+    }
+  }
+})
